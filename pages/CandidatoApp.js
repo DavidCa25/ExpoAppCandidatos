@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { View, Text, TouchableOpacity, Modal, StyleSheet, FlatList, Image, ActivityIndicator } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import axios from 'axios';
 
+
+
 const CandidatoApp = () => {
+
+
   const insets = useSafeAreaInsets();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpenV, setIsModalOpenV] = useState(false);
@@ -18,7 +22,7 @@ const CandidatoApp = () => {
 
   const fetchCandidatos = async () => {
       try {
-        const response = await axios.get('https://rlm1lpvj78u9.share.zrok.io/api/candidatos/');
+        const response = await axios.get('https://6znv4w6mgae4.share.zrok.io/api/candidatos/');
         setListCandidatos(response.data)
        
         set
@@ -28,6 +32,9 @@ const CandidatoApp = () => {
       }
   }
 
+  
+  
+
 
   const abrirModal = (candidato) => {
     setCandidatoSeleccionado(candidato);
@@ -36,15 +43,12 @@ const CandidatoApp = () => {
 
   const votarPorCandidato = (candidatoId) => {
     try {
-     
+        
     } catch (error) {
       
     }
   };
 
-  const eliminarCandidato = (candidatoId) => {
-    // Lógica para eliminar el candidato
-  };
 
   const setOpen = (value) => {
     setIsModalOpen(value);
@@ -64,6 +68,7 @@ const CandidatoApp = () => {
       </View>
 
       <View style={styles.content}>
+        
         <FlatList
           data={listCandidatos}
           keyExtractor={(item) => item._id.toString()}
@@ -80,12 +85,10 @@ const CandidatoApp = () => {
                 <TouchableOpacity style={styles.buttonOutline} onPress={() => abrirModal(item)}>
                   <Text style={styles.buttonText}>Detalle</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={() => votarPorCandidato(item._id)}>
+                <TouchableOpacity style={styles.button} onPress={() => votarPorCandidato(item._id)}  >
                   <Text style={styles.buttonText}>Votar</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.buttonRound} onPress={() => eliminarCandidato(item._id)}>
-                  <Ionicons name="trash" size={24} color="white" />
-                </TouchableOpacity>
+                
               </View>
             </View>
           )}

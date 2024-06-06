@@ -20,7 +20,7 @@ const InicioCandido = () => {
 
   const fetchCandidatos = async () => {
       try {
-        const response = await axios.get('https://rlm1lpvj78u9.share.zrok.io/api/candidatos/');
+        const response = await axios.get('https://6znv4w6mgae4.share.zrok.io/api/candidatos/');
         setListCandidatos(response.data)
        
         

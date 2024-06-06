@@ -6,6 +6,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import InicioCandido from './pages/InicioCandido';
 import IneApp from './pages/IneApp';
+import CameraViewApp from './pages/CameraViewApp';
+import GraficosVotaciones from './pages/GraficosVotaciones';
 
 const Stack = createStackNavigator();
 
@@ -18,6 +20,8 @@ const App = () => {
           <Stack.Screen name="InicioVista" component={InicioCandido}/>
           <Stack.Screen name="IneApp" component={IneApp}/>
           <Stack.Screen name="CandidatoVotar" component={CandidatoApp}/>
+          <Stack.Screen name="CameraViewApp" component={CameraViewApp}/>
+          <Stack.Screen name="GraficosVotaciones" component={GraficosVotaciones}/>
         </Stack.Navigator>  
       </NavigationContainer>
     </SafeAreaProvider> 

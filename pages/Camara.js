@@ -1,47 +1,33 @@
-import { CameraView, useCameraPermissions } from "expo-camera";
-import { Alert, Button, StyleSheet, View, Text } from "react-native";
+import { CameraView } from "expo-camera";
+import { Alert, Button, StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { useRef } from "react";
 
 const Camera = (props) => {
-    const {scanned, setScanned} = props
-    const [permission, requestPermission] = useCameraPermissions()
-    const handleScanned = ({ type, data}) => {
-        setScanned(true);
-        Alert.alert(
-            "Barcode",
-            `Tipo de Barcode ${type} y datos ${data} escaneado!`,
-            [
-                { text: "OK", onPress: () => setScanned(false)}
-            ]
-        );
-    }
+    const { scanned, setScanned, setImage } = props;
+    const cameraRef = useRef(null);
 
-    if(!permission){
-        return(
-            <View></View>
-        );
-    }
+    const handleTakePicture = async () => {
+        if (cameraRef.current) {
+            const photo = await cameraRef.current.takePictureAsync();
+            setImage(photo.uri);
+            setScanned(true);
+        }
+    };
 
-    if(!permission.granted){
-        return(
-            <View style={styles.cameraContainer}>
-                <Text>Necesitas los permisos de camara</Text>
-                <Button onPress={requestPermission} title="Pedir permisos"></Button>
-            </View>
-            
-        );
-    }
-
-    return(
+    return (
         <View style={styles.cameraContainer}>
             <CameraView
+                ref={cameraRef}
                 style={styles.camera}
                 facing={"back"}
-                barcodeScannerSettings={{
-                    barcodeTypes: ["qr"]
-                }}
-                onBarcodeScanned={scanned ? undefined: handleScanned}
             >
+               
             </CameraView>
+            <View style={styles.buttonContainer}>
+                    <TouchableOpacity style={styles.button} onPress={handleTakePicture}>
+                        <Text style={styles.buttonText}>Tomar Foto</Text>
+                    </TouchableOpacity>
+                </View>
         </View>
     );
 };
@@ -52,11 +38,30 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginBottom: 40,
         overflow: 'hidden',
-        aspectRatio: 1
+        aspectRatio: 1,
     },
     camera: {
-        flex: 1
-    }
+        flex: 1,
+    },
+    buttonContainer: {
+        flex: 1,
+        backgroundColor: 'transparent',
+        flexDirection: 'row',
+        margin: 20,
+    },
+    button: {
+        flex: 0.1,
+        alignSelf: 'flex-end',
+        alignItems: 'center',
+        backgroundColor: '#fff',
+        borderRadius: 5,
+        padding: 10,
+        margin: 10,
+    },
+    buttonText: {
+        fontSize: 18,
+        color: '#000',
+    },
 });
 
 export default Camera;
