@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useRoute, useNavigation } from '@react-navigation/native';
-import Camera from "./Camara";
+import CameraApp from "./Camara";
 import { useState } from "react";
 
 const CameraViewApp = () => {
@@ -27,7 +27,7 @@ const CameraViewApp = () => {
             }}
         >
             <Text style={styles.title}>Bienvenido al Scanner de QR</Text>
-            <Camera scanned={scanned} setScanned={setScanned} setImage={setImage} />
+            <CameraApp scanned={scanned} setScanned={setScanned} setImage={setImage} />
             <TouchableOpacity
                 style={styles.button}
                 onPress={handleReturn}

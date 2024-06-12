@@ -9,7 +9,7 @@ import { useNavigation} from '@react-navigation/native';
 const InicioCandido = () => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [candidatoSeleccionado, setCandidatoSeleccionado] = useState(null);
   const [listCandidatos, setListCandidatos] = useState([]);
   const [setLoading, loading] = useState(true);
@@ -20,7 +20,7 @@ const InicioCandido = () => {
 
   const fetchCandidatos = async () => {
       try {
-        const response = await axios.get('https://6znv4w6mgae4.share.zrok.io/api/candidatos/');
+        const response = await axios.get('https://ibso3a41gmzf.share.zrok.io/api/candidatos/');
         setListCandidatos(response.data)
        
         
@@ -56,7 +56,10 @@ const InicioCandido = () => {
                 <View style={styles.itemContainer}>
                   <Image source={{ uri: item.imgFoto }} style={styles.thumbnail} />
                   <Text style={styles.candidateName}>{item.candidato}</Text>
-                </View>             
+                </View>  
+                <TouchableOpacity style={styles.buttonOutline} onPress={() => abrirModal(item)}>
+                  <Text style={styles.buttonText}>Detalle</Text>
+                </TouchableOpacity>           
               </View>
             </View>
           )}
@@ -65,6 +68,21 @@ const InicioCandido = () => {
                   <Text style={styles.buttonText}>Votar</Text>
         </TouchableOpacity>
       </View>
+      <Modal visible={isModalOpen} transparent={true} animationType="slide">
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalTitle}>Propuesta</Text>
+            <TouchableOpacity style={styles.closeButton} onPress={() => setIsModalOpen(false)}>
+              <Text style={styles.closeButtonText}>Close</Text>
+            </TouchableOpacity>
+            <View>
+              {candidatoSeleccionado && candidatoSeleccionado.propuestas.map((propuesta, index) => (
+                <Text key={index} style={styles.propuestaText}>{propuesta.titulo}</Text>
+              ))}
+            </View>
+          </View>
+        </View>
+      </Modal>
       
     </View>
   );

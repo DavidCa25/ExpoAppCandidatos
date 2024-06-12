@@ -2,7 +2,7 @@ import { CameraView } from "expo-camera";
 import { Alert, Button, StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { useRef } from "react";
 
-const Camera = (props) => {
+const CameraApp = (props) => {
     const { scanned, setScanned, setImage } = props;
     const cameraRef = useRef(null);
 
@@ -34,11 +34,11 @@ const Camera = (props) => {
 
 const styles = StyleSheet.create({
     cameraContainer: {
-        width: '80%',
+        width: '100%',
         borderRadius: 10,
         marginBottom: 40,
         overflow: 'hidden',
-        aspectRatio: 1,
+        flex:1
     },
     camera: {
         flex: 1,
@@ -64,4 +64,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Camera;
+export default CameraApp;
