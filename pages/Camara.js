@@ -34,11 +34,11 @@ const CameraApp = (props) => {
 
 const styles = StyleSheet.create({
     cameraContainer: {
-        width: '100%',
-        borderRadius: 10,
-        marginBottom: 40,
+        width: '95%',
+        borderRadius: 1,
+        marginBottom: 30,
         overflow: 'hidden',
-        flex:1
+        flex:1,
     },
     camera: {
         flex: 1,
@@ -50,13 +50,14 @@ const styles = StyleSheet.create({
         margin: 20,
     },
     button: {
-        flex: 0.1,
-        alignSelf: 'flex-end',
+        alignSelf: 'center',
         alignItems: 'center',
         backgroundColor: '#fff',
-        borderRadius: 5,
-        padding: 10,
-        margin: 10,
+        borderRadius: 1,
+        padding: 15,
+        margin: 90,
+        marginTop: 5,
+        justifyContent: 'center',
     },
     buttonText: {
         fontSize: 18,

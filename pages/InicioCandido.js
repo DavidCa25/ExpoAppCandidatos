@@ -91,10 +91,10 @@ const InicioCandido = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#000000',
   },
   header: {
-    backgroundColor: '#6200ea',
+    backgroundColor: '#3c4b4e',
     padding: 20,
   },
   headerText: {
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   card: {
-    backgroundColor: 'white',
+    backgroundColor: '#3c4b4e',
     borderRadius: 10,
     elevation: 8,
     marginVertical: 10,
@@ -139,14 +139,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   button: {
-    backgroundColor: '#6200ea',
+    backgroundColor: '#74847c',
     padding: 10,
     borderRadius: 5,
     marginVertical: 5,
     alignItems: 'center',
   },
   buttonOutline: {
-    borderColor: '#6200ea',
+    borderColor: '##74847c',
     borderWidth: 1,
     padding: 10,
     borderRadius: 5,
