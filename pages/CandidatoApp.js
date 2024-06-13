@@ -69,35 +69,32 @@ const CandidatoApp = () => {
       <View style={styles.header}>
         <Text style={styles.headerText}>Jornada Electoral</Text>
       </View>
-      <ScrollView contentContainerStyle={styles.scrollViewContent}>
-        <View style={styles.cameraCard}>
-          <Text style={styles.title}>Video Votacion</Text>
-          <CamaraFaceDetection />
-          
-        </View>
-        <View style={styles.listSection}>
-          <FlatList
-            data={listCandidatos}
-            keyExtractor={(item) => item._id.toString()}
-            numColumns={3}
-            columnWrapperStyle={styles.row}
-            renderItem={({ item }) => (
-              <View style={styles.card}>
-                <View style={styles.cardHeader}>
-                  <Text style={styles.cardTitle}>{item.partido}</Text>
-                </View>
-                <View style={styles.cardContent}>
-                  <Image source={{ uri: item.imgFoto }} style={styles.thumbnail} />
-                  <Text style={styles.candidateName}>{item.candidato}</Text>
-                  <TouchableOpacity style={styles.button} onPress={() => votarPorCandidato(item._id)}>
-                    <Text style={styles.buttonText}>Votar</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            )}
-          />
-        </View>
-      </ScrollView>
+      <FlatList
+        data={listCandidatos}
+        keyExtractor={(item) => item._id.toString()}
+        numColumns={3}
+        columnWrapperStyle={styles.row}
+        ListHeaderComponent={() => (
+          <View style={styles.cameraCard}>
+            <Text style={styles.title}>Video Votacion</Text>
+            <CamaraFaceDetection />
+          </View>
+        )}
+        renderItem={({ item }) => (
+          <View style={styles.card}>
+            <View style={styles.cardHeader}>
+              <Text style={styles.cardTitle}>{item.partido}</Text>
+            </View>
+            <View style={styles.cardContent}>
+              <Image source={{ uri: item.imgFoto }} style={styles.thumbnail} />
+              <Text style={styles.candidateName}>{item.candidato}</Text>
+              <TouchableOpacity style={styles.button} onPress={() => votarPorCandidato(item._id)}>
+                <Text style={styles.buttonText}>Votar</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        )}
+      />
       <Modal visible={isModalOpenV} transparent={true} animationType="slide">
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>

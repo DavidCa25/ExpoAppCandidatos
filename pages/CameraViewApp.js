@@ -44,12 +44,13 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
     button: {
+        marginBottom: 40,
         backgroundColor: 'gray',
         borderRadius: 30,
         paddingVertical: 20,
-        paddingHorizontal: 10,
+        paddingHorizontal: 1,
         height: '9%',
-        width: '17%',
+        width: '35%',
         alignItems: 'center',
         justifyContent: 'center',
     },

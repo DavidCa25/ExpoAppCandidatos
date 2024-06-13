@@ -11,17 +11,58 @@ import GraficosVotaciones from './pages/GraficosVotaciones';
 
 const Stack = createStackNavigator();
 
-
+// HOLA
 const App = () => {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="InicioVista" component={InicioCandido}/>
-          <Stack.Screen name="IneApp" component={IneApp}/>
-          <Stack.Screen name="CandidatoVotar" component={CandidatoApp}/>
-          <Stack.Screen name="CameraViewApp" component={CameraViewApp}/>
-          <Stack.Screen name="GraficosVotaciones" component={GraficosVotaciones}/>
+          <Stack.Screen 
+          name="InicioVista" 
+          component={InicioCandido}
+          options={{
+            title: '',
+            headerStyle: {
+              backgroundColor: '#3c4b4e',
+            },
+          }}
+          />
+          <Stack.Screen 
+          name="IneApp" 
+          component={IneApp}
+          options={{
+            title: '',
+            headerStyle: {
+              backgroundColor: '#3c4b4e',
+            },
+          }}/>
+          <Stack.Screen 
+          name="CandidatoVotar" 
+          component={CandidatoApp}
+          options={{
+            title: '',
+            headerStyle: {
+              backgroundColor: '#3c4b4e',
+            },
+          }}/>
+          <Stack.Screen 
+          name="CameraViewApp" 
+          component={CameraViewApp}
+          options={{
+            title: '',
+            headerStyle: {
+              backgroundColor: '#3c4b4e',
+            },
+          }}/>
+          <Stack.Screen 
+          name="GraficosVotaciones" 
+          component={GraficosVotaciones}
+          options={{
+            title: '',
+            headerStyle: {
+              backgroundColor: '#3c4b4e',
+            },
+          }}/>
         </Stack.Navigator>  
       </NavigationContainer>
     </SafeAreaProvider> 
